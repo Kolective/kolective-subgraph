@@ -5,36 +5,147 @@ import {
   Transfer,
 } from "ponder:schema";
 
-const handleEvent = async (table: any, event: any, context: any, extraValues = {}) => {
-  const uniqueId = `${event.transaction.hash}-${event.block.number}-${event.block.timestamp}`;
-  
-  await context.db.insert(table).values({
-    id: uniqueId,
-    blockNumber: event.block.number,
-    blockTimestamp: event.block.timestamp,
-    transactionHash: event.transaction.hash,
-    ...extraValues,
-  });
-};
-
 ponder.on("Core:Swap", async ({ event, context }) => {
-  await handleEvent(Swap, event, context, {
-    sender: event.args.sender,
-    tokenIn: event.args.tokenIn,
-    tokenOut: event.args.tokenOut,
-    amountIn: event.args.amountIn.toString(),
-    amountOut: event.args.amountOut.toString(),
-    buyPrice: event.args.buyPrice.toString(),
-    sellPrice: event.args.sellPrice.toString(),
-  });
+  await context.db
+    .insert(Swap)
+    .values({
+      id: `${event.transaction.hash} + ${event.block.number}`,
+      sender: event.args.sender,
+      tokenIn: event.args.tokenIn,
+      tokenOut: event.args.tokenOut,
+      amountIn: event.args.amountIn.toString(),
+      amountOut: event.args.amountOut.toString(),
+      buyPrice: event.args.buyPrice.toString(),
+      sellPrice: event.args.sellPrice.toString(),
+      blockNumber: event.block.number.toString(),
+      blockTimestamp: event.block.timestamp.toString(),
+      transactionHash: event.transaction.hash,
+    });
 });
 
-(["SONIC", "ETH", "BTC", "WETH", "PEPE", "TRUMP", "DOGEAI", "WIF", "STONKS"] as const).forEach(token => {
-  ponder.on(`${token}:Transfer`, async ({ event, context }) => {
-    await handleEvent(Transfer, event, context, {
+ponder.on("SONIC:Transfer", async ({ event, context }) => {
+  await context.db
+    .insert(Transfer)
+    .values({
+      id: `${event.transaction.hash} + ${event.block.number}`,
       from: event.args.from,
       to: event.args.to,
       value: event.args.value.toString(),
+      blockNumber: event.block.number.toString(),
+      blockTimestamp: event.block.timestamp.toString(),
+      transactionHash: event.transaction.hash,
     });
-  });
 });
+
+ponder.on("ETH:Transfer", async ({ event, context }) => {
+  await context.db
+    .insert(Transfer)
+    .values({
+      id: `${event.transaction.hash} + ${event.block.number}`,
+      from: event.args.from,
+      to: event.args.to,
+      value: event.args.value.toString(),
+      blockNumber: event.block.number.toString(),
+      blockTimestamp: event.block.timestamp.toString(),
+      transactionHash: event.transaction.hash,
+    });
+});
+
+ponder.on("BTC:Transfer", async ({ event, context }) => {
+  await context.db
+    .insert(Transfer)
+    .values({
+      id: `${event.transaction.hash} + ${event.block.number}`,
+      from: event.args.from,
+      to: event.args.to,
+      value: event.args.value.toString(),
+      blockNumber: event.block.number.toString(),
+      blockTimestamp: event.block.timestamp.toString(),
+      transactionHash: event.transaction.hash,
+    });
+});
+
+ponder.on("WETH:Transfer", async ({ event, context }) => {
+  await context.db
+    .insert(Transfer)
+    .values({
+      id: `${event.transaction.hash} + ${event.block.number}`,
+      from: event.args.from,
+      to: event.args.to,
+      value: event.args.value.toString(),
+      blockNumber: event.block.number.toString(),
+      blockTimestamp: event.block.timestamp.toString(),
+      transactionHash: event.transaction.hash,
+    });
+});
+
+ponder.on("PEPE:Transfer", async ({ event, context }) => {
+  await context.db
+    .insert(Transfer)
+    .values({
+      id: `${event.transaction.hash} + ${event.block.number}`,
+      from: event.args.from,
+      to: event.args.to,
+      value: event.args.value.toString(),
+      blockNumber: event.block.number.toString(),
+      blockTimestamp: event.block.timestamp.toString(),
+      transactionHash: event.transaction.hash,
+    });
+});
+
+ponder.on("TRUMP:Transfer", async ({ event, context }) => {
+  await context.db
+    .insert(Transfer)
+    .values({
+      id: `${event.transaction.hash} + ${event.block.number}`,
+      from: event.args.from,
+      to: event.args.to,
+      value: event.args.value.toString(),
+      blockNumber: event.block.number.toString(),
+      blockTimestamp: event.block.timestamp.toString(),
+      transactionHash: event.transaction.hash,
+    });
+});
+
+ponder.on("DOGEAI:Transfer", async ({ event, context }) => {
+  await context.db
+    .insert(Transfer)
+    .values({
+      id: `${event.transaction.hash} + ${event.block.number}`,
+      from: event.args.from,
+      to: event.args.to,
+      value: event.args.value.toString(),
+      blockNumber: event.block.number.toString(),
+      blockTimestamp: event.block.timestamp.toString(),
+      transactionHash: event.transaction.hash,
+    });
+});
+
+ponder.on("WIF:Transfer", async ({ event, context }) => {
+  await context.db
+    .insert(Transfer)
+    .values({
+      id: `${event.transaction.hash} + ${event.block.number}`,
+      from: event.args.from,
+      to: event.args.to,
+      value: event.args.value.toString(),
+      blockNumber: event.block.number.toString(),
+      blockTimestamp: event.block.timestamp.toString(),
+      transactionHash: event.transaction.hash,
+    });
+});
+
+ponder.on("STONKS:Transfer", async ({ event, context }) => {
+  await context.db
+    .insert(Transfer)
+    .values({
+      id: `${event.transaction.hash} + ${event.block.number}`,
+      from: event.args.from,
+      to: event.args.to,
+      value: event.args.value.toString(),
+      blockNumber: event.block.number.toString(),
+      blockTimestamp: event.block.timestamp.toString(),
+      transactionHash: event.transaction.hash,
+    });
+});
+
