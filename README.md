@@ -1,4 +1,4 @@
-# OriginX Subgraph with Ponder
+# Kolective Subgraph with Ponder
 
 ![Ponder Logo](./public/logo-ponder.png)
 
@@ -38,24 +38,9 @@ yarn dev
 ```
 
 ## 📡 Supported Events
-### OriginX Contract
-- `Deposit`
-- `Withdrawal`
+### Kolective Contract
 - `Swap`
-
-### Staking Contracts (EulerV2, Lombard Finance, SiloV2, SpectraV2, Origin Protocol)
-- `APYUpdated`
-- `EmergencyWithdraw`
-- `PartialWithdraw`
-- `Staked`
-- `WithdrawAll`
-
-### Token Contracts (USDCe, wS, OS, S, LBTC)
-- `Approval`
 - `Transfer`
-
-### OriginX AVS Contracts (OriginXServiceManager)
-- `OriginXTaskResponded`
 
 ## ⚡ Configuration
 Modify the **ponder.config.ts** file to add/remove contracts or update network settings.
@@ -68,7 +53,7 @@ export default createConfig({
     },
   },
   contracts: {
-    OriginX: { ... },
+    Kolective: { ... },
     EulerV2: { ... },
     // Add more contracts here
   },
