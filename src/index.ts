@@ -9,7 +9,7 @@ ponder.on("Core:Swap", async ({ event, context }) => {
   await context.db
     .insert(Swap)
     .values({
-      id: `${event.transaction.hash} + ${event.block.number}`,
+      id: `${event.transaction.hash}-${event.log.logIndex}-${event.block.number}`,
       sender: event.args.sender,
       tokenIn: event.args.tokenIn,
       tokenOut: event.args.tokenOut,
@@ -27,7 +27,7 @@ ponder.on("SONIC:Transfer", async ({ event, context }) => {
   await context.db
     .insert(Transfer)
     .values({
-      id: `${event.transaction.hash} + ${event.block.number}`,
+      id: `SONIC-${event.transaction.hash}-${event.log.logIndex}-${event.block.number}`,
       from: event.args.from,
       to: event.args.to,
       value: event.args.value.toString(),
@@ -41,7 +41,7 @@ ponder.on("ETH:Transfer", async ({ event, context }) => {
   await context.db
     .insert(Transfer)
     .values({
-      id: `${event.transaction.hash} + ${event.block.number}`,
+      id: `ETH-${event.transaction.hash}-${event.log.logIndex}-${event.block.number}`,
       from: event.args.from,
       to: event.args.to,
       value: event.args.value.toString(),
@@ -55,7 +55,7 @@ ponder.on("BTC:Transfer", async ({ event, context }) => {
   await context.db
     .insert(Transfer)
     .values({
-      id: `${event.transaction.hash} + ${event.block.number}`,
+      id: `BTC-${event.transaction.hash}-${event.log.logIndex}-${event.block.number}`,
       from: event.args.from,
       to: event.args.to,
       value: event.args.value.toString(),
@@ -69,7 +69,7 @@ ponder.on("WETH:Transfer", async ({ event, context }) => {
   await context.db
     .insert(Transfer)
     .values({
-      id: `${event.transaction.hash} + ${event.block.number}`,
+      id: `WETH-${event.transaction.hash}-${event.log.logIndex}-${event.block.number}`,
       from: event.args.from,
       to: event.args.to,
       value: event.args.value.toString(),
@@ -83,7 +83,7 @@ ponder.on("PEPE:Transfer", async ({ event, context }) => {
   await context.db
     .insert(Transfer)
     .values({
-      id: `${event.transaction.hash} + ${event.block.number}`,
+      id: `PEPE-${event.transaction.hash}-${event.log.logIndex}-${event.block.number}`,
       from: event.args.from,
       to: event.args.to,
       value: event.args.value.toString(),
@@ -97,7 +97,7 @@ ponder.on("TRUMP:Transfer", async ({ event, context }) => {
   await context.db
     .insert(Transfer)
     .values({
-      id: `${event.transaction.hash} + ${event.block.number}`,
+      id: `TRUMP-${event.transaction.hash}-${event.log.logIndex}-${event.block.number}`,
       from: event.args.from,
       to: event.args.to,
       value: event.args.value.toString(),
@@ -111,7 +111,7 @@ ponder.on("DOGEAI:Transfer", async ({ event, context }) => {
   await context.db
     .insert(Transfer)
     .values({
-      id: `${event.transaction.hash} + ${event.block.number}`,
+      id: `DOGEAI-${event.transaction.hash}-${event.log.logIndex}-${event.block.number}`,
       from: event.args.from,
       to: event.args.to,
       value: event.args.value.toString(),
@@ -125,7 +125,7 @@ ponder.on("WIF:Transfer", async ({ event, context }) => {
   await context.db
     .insert(Transfer)
     .values({
-      id: `${event.transaction.hash} + ${event.block.number}`,
+      id: `WIF-${event.transaction.hash}-${event.log.logIndex}-${event.block.number}`,
       from: event.args.from,
       to: event.args.to,
       value: event.args.value.toString(),
@@ -139,7 +139,7 @@ ponder.on("STONKS:Transfer", async ({ event, context }) => {
   await context.db
     .insert(Transfer)
     .values({
-      id: `${event.transaction.hash} + ${event.block.number}`,
+      id: `STONKS-${event.transaction.hash}-${event.log.logIndex}-${event.block.number}`,
       from: event.args.from,
       to: event.args.to,
       value: event.args.value.toString(),
@@ -148,4 +148,3 @@ ponder.on("STONKS:Transfer", async ({ event, context }) => {
       transactionHash: event.transaction.hash,
     });
 });
-
