@@ -6,7 +6,7 @@ import {
 } from "ponder:schema";
 
 const handleEvent = async (table: any, event: any, context: any, extraValues = {}) => {
-  const uniqueId = `${event.transaction.hash}-${event.log.index}`;
+  const uniqueId = `${event.transaction.hash}-${event.block.number}-${event.block.timestamp}`;
   
   await context.db.insert(table).values({
     id: uniqueId,
