@@ -26,6 +26,13 @@ To set up the project locally:
 git clone https://github.com/Kolective/kolective-subgraph
 cd kolective-subgraph
 
+# Create a `.env` file and add necessary environment variables
+```env
+PONDER_RPC_URL_1=
+DATABASE_URL=
+DATABASE_SCHEMA=
+```
+
 # Install dependencies
 yarn install
 ```
