@@ -3,12 +3,11 @@
 ![Ponder Logo](./public/logo-ponder.png)
 
 ## 🚀 Overview
-This project is a **Ponder Event Listener** setup that listens to on-chain events from various smart contracts on the **Sonic Blaze Testnet**. It records events like **deposits, withdrawals, staking, swaps, approvals, and etc** into a structured database.
+This project is a **Ponder Event Listener** setup that listens to on-chain events from various smart contracts on the **Sonic Blaze Testnet**. It records events like **swaps and transfers** into a structured database.
 
 ## 📌 Features
 - Listens to multiple smart contracts.
-- Stores events efficiently using a single **handleEvent** function.
-- Supports **staking, swapping, deposits, withdrawals, and token transfers**.
+- Supports **swapping and token transfers**.
 - Uses **Ponder** for indexing and event tracking.
 
 ## 📂 Project Structure
@@ -24,8 +23,8 @@ This project is a **Ponder Event Listener** setup that listens to on-chain event
 To set up the project locally:
 ```sh
 # Clone the repository
-git clone https://github.com/your-username/ponder-event-listener.git
-cd ponder-event-listener
+git clone https://github.com/Kolective/kolective-subgraph
+cd kolective-subgraph
 
 # Install dependencies
 yarn install
@@ -34,7 +33,7 @@ yarn install
 ## 🏗️ Usage
 Run the Ponder indexer to start listening for events:
 ```sh
-yarn dev
+yarn start --schema public
 ```
 
 ## 📡 Supported Events
@@ -54,7 +53,6 @@ export default createConfig({
   },
   contracts: {
     Kolective: { ... },
-    EulerV2: { ... },
     // Add more contracts here
   },
 });
