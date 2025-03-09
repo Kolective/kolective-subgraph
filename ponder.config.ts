@@ -4,10 +4,10 @@ import { CoreABI } from "./abis/CoreABI";
 import { TokenABI } from "./abis/TokenABI";
 
 export default createConfig({
-  database: {
-    kind: "postgres",
-    connectionString: process.env.PONDER_DATABASE_URL,
-  },
+  // database: {
+  //   kind: "postgres",
+  //   connectionString: process.env.PONDER_DATABASE_URL,
+  // },
   networks: {
     sonicBlazeTestnet: {
       chainId: 57054,
